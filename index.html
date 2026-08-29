@@ -4,114 +4,680 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Solecito Flower</title>
+  <title>Solecito Flower | Florería en Hermosillo</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fffdf7;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffdf8;
+      color: #241f1a;
+    }
+
+    /* BARRA SUPERIOR */
+    .topbar {
+      background: #fff0a8;
+      text-align: center;
+      padding: 9px 15px;
+      font-size: 13px;
+    }
+
+    /* NAVEGACIÓN */
+    nav {
+      background: rgba(255,255,255,0.96);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    }
+
+    .menu {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      font-style: italic;
+    }
+
+    .social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social a {
+      text-decoration: none;
       color: #222;
+      font-size: 22px;
     }
 
-    header {
-      background-color: #fff1a8;
-      text-align: center;
-      padding: 55px 20px;
+    /* PORTADA */
+    .hero {
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      padding: 60px 8%;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,250,238,.98) 0%,
+          rgba(255,250,238,.91) 40%,
+          rgba(255,250,238,.25) 70%
+        ),
+        url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1600&q=85");
+
+      background-size: cover;
+      background-position: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 42px;
+    .hero-text {
+      max-width: 520px;
     }
 
-    header p {
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: 58px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: #e4af27;
+      font-style: italic;
       margin-top: 10px;
-      font-size: 17px;
     }
 
-    .catalogo {
-      max-width: 900px;
-      margin: auto;
-      padding: 35px 20px;
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 25px 0;
     }
 
-    .catalogo h2 {
-      text-align: center;
-      margin-bottom: 30px;
+    .btn {
+      display: inline-block;
+      background: #ffe189;
+      padding: 15px 28px;
+      border-radius: 40px;
+      text-decoration: none;
+      color: #231f1b;
+      font-weight: bold;
+      transition: .2s;
     }
 
-    .categorias {
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.10);
+    }
+
+    /* BENEFICIOS */
+    .beneficios {
+      max-width: 1100px;
+      margin: -35px auto 0;
+      background: white;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      padding: 25px;
+      position: relative;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(4,1fr);
       gap: 15px;
+    }
+
+    .beneficio {
+      text-align: center;
+      padding: 12px;
+    }
+
+    .beneficio span {
+      font-size: 30px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .beneficio strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .beneficio small {
+      color: #6f6861;
+    }
+
+    /* TÍTULOS */
+    .titulo-seccion {
+      text-align: center;
+      padding: 75px 20px 30px;
+    }
+
+    .titulo-seccion h2 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: 38px;
+    }
+
+    .titulo-seccion div {
+      color: #e5b435;
+      font-size: 25px;
+      margin-top: 5px;
+    }
+
+    /* CATEGORÍAS */
+    .categorias {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 30px;
+      display: grid;
+      grid-template-columns: repeat(6,1fr);
+      gap: 16px;
     }
 
     .categoria {
       background: white;
       border-radius: 18px;
-      padding: 28px 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
       text-align: center;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-      cursor: pointer;
+      transition: .2s;
     }
 
     .categoria:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
     }
 
-    footer {
+    .categoria-img {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .cat1 {
+      background-image: url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=600&q=80");
+    }
+
+    .cat2 {
+      background-image: url("https://images.unsplash.com/photo-1518895312237-a9e23508077d?auto=format&fit=crop&w=600&q=80");
+    }
+
+    .cat3 {
+      background-image: url("https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80");
+    }
+
+    .cat4 {
+      background-image: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80");
+    }
+
+    .cat5 {
+      background-image: url("https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=600&q=80");
+    }
+
+    .cat6 {
+      background-image: url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80");
+    }
+
+    .categoria h3 {
+      font-size: 15px;
+      padding: 16px 8px;
+    }
+
+    /* PRODUCTOS */
+    .productos {
+      max-width: 1000px;
+      margin: auto;
+      padding: 0 30px 60px;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 28px;
+    }
+
+    .producto {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 7px 23px rgba(0,0,0,.08);
       text-align: center;
-      padding: 30px;
+    }
+
+    .producto img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+    }
+
+    .producto-info {
+      padding: 18px;
+    }
+
+    .producto h3 {
+      font-family: Georgia, serif;
+      font-size: 23px;
+      font-weight: 400;
+    }
+
+    .producto p {
+      color: #6c645e;
+      font-size: 14px;
+      margin: 9px 0;
+      line-height: 1.5;
+    }
+
+    .precio {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .whatsapp {
+      display: block;
+      background: #ffe189;
+      color: #201c18;
+      padding: 13px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* BANNER */
+    .banner {
+      margin: 10px auto 70px;
+      max-width: 1100px;
+      border-radius: 25px;
+      padding: 40px;
+      text-align: center;
+      background: linear-gradient(90deg,#fff8df,#ffe998,#fff8df);
+    }
+
+    .banner h2 {
+      font-family: Georgia, serif;
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    .banner p {
+      margin: 10px 0 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #fff8e6;
+      padding: 45px 8% 25px;
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 40px;
+    }
+
+    footer h3 {
+      margin-bottom: 13px;
+    }
+
+    footer p,
+    footer a {
+      color: #665f58;
+      text-decoration: none;
+      line-height: 1.9;
       font-size: 14px;
     }
+
+    .copyright {
+      max-width: 1100px;
+      margin: 30px auto 0;
+      border-top: 1px solid #e2d9c5;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    /* CELULAR */
+    @media (max-width: 850px) {
+
+      nav {
+        padding: 15px 20px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .hero {
+        min-height: 540px;
+        padding: 45px 25px;
+        align-items: flex-end;
+        background:
+          linear-gradient(
+            0deg,
+            rgba(255,250,238,.96) 0%,
+            rgba(255,250,238,.72) 42%,
+            rgba(255,250,238,.05) 75%
+          ),
+          url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=900&q=85");
+
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .beneficios {
+        margin: 20px;
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .categorias {
+        display: flex;
+        overflow-x: auto;
+        padding: 5px 20px 20px;
+      }
+
+      .categoria {
+        min-width: 165px;
+      }
+
+      .productos {
+        grid-template-columns: 1fr;
+        padding: 0 20px 50px;
+      }
+
+      .producto {
+        max-width: 420px;
+        margin: auto;
+      }
+
+      .banner {
+        margin: 0 20px 50px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>☀️ Solecito Flower</h1>
-    <p>Un rayito de sol en forma de flores 🌷</p>
-  </header>
+  <div class="topbar">
+    🚚 Entregas en Hermosillo &nbsp; · &nbsp; 💛 Un rayito de sol en forma de flores
+  </div>
 
-  <section class="catalogo">
+  <nav>
 
+    <div class="menu">☰</div>
+
+    <div class="logo">
+      Solecito <span>Flower</span>
+    </div>
+
+    <div class="social">
+      <a href="#" title="Instagram">♡</a>
+      <a href="#" title="WhatsApp">☏</a>
+    </div>
+
+  </nav>
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <h1>
+        Flores que cuentan
+        <span>tu historia ☀</span>
+      </h1>
+
+      <p>
+        Ramos y arreglos florales para regalar,
+        celebrar y hacer especial cualquier momento.
+      </p>
+
+      <a href="#catalogo" class="btn">
+        Ver catálogo ↓
+      </a>
+
+    </div>
+
+  </section>
+
+  <section class="beneficios">
+
+    <div class="beneficio">
+      <span>🚚</span>
+      <strong>Entregas</strong>
+      <small>En Hermosillo</small>
+    </div>
+
+    <div class="beneficio">
+      <span>🌷</span>
+      <strong>Flores frescas</strong>
+      <small>Seleccionadas con amor</small>
+    </div>
+
+    <div class="beneficio">
+      <span>💛</span>
+      <strong>A tu presupuesto</strong>
+      <small>Opciones para cada ocasión</small>
+    </div>
+
+    <div class="beneficio">
+      <span>🎁</span>
+      <strong>Regalos especiales</strong>
+      <small>Para sorprender bonito</small>
+    </div>
+
+  </section>
+
+  <div class="titulo-seccion" id="catalogo">
     <h2>Nuestro catálogo</h2>
+    <div>— ♡ —</div>
+  </div>
 
-    <div class="categorias">
+  <section class="categorias">
 
-      <div class="categoria">
-        🎂
-        <h3>Cumpleaños</h3>
+    <div class="categoria">
+      <div class="categoria-img cat1"></div>
+      <h3>🎂 Cumpleaños</h3>
+    </div>
+
+    <div class="categoria">
+      <div class="categoria-img cat2"></div>
+      <h3>♡ Aniversario</h3>
+    </div>
+
+    <div class="categoria">
+      <div class="categoria-img cat3"></div>
+      <h3>🌼 Ramos surtidos</h3>
+    </div>
+
+    <div class="categoria">
+      <div class="categoria-img cat4"></div>
+      <h3>💐 Arreglos florales</h3>
+    </div>
+
+    <div class="categoria">
+      <div class="categoria-img cat5"></div>
+      <h3>✨ Ofertas</h3>
+    </div>
+
+    <div class="categoria">
+      <div class="categoria-img cat6"></div>
+      <h3>🎁 Surprise Bouquet</h3>
+    </div>
+
+  </section>
+
+  <div class="titulo-seccion">
+    <h2>Nuestros más pedidos</h2>
+    <div>— ♡ —</div>
+  </div>
+
+  <section class="productos">
+
+    <div class="producto">
+
+      <img
+        src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=700&q=85"
+        alt="Ramo rosa"
+      >
+
+      <div class="producto-info">
+
+        <h3>Ramo Rosa</h3>
+
+        <p>
+          Un detalle delicado para hacer especial cualquier ocasión.
+        </p>
+
+        <div class="precio">$650</div>
+
+        <a
+          class="whatsapp"
+          href="#"
+        >
+          ☏ Pedir por WhatsApp
+        </a>
+
       </div>
 
-      <div class="categoria">
-        ❤️
-        <h3>Aniversario</h3>
+    </div>
+
+    <div class="producto">
+
+      <img
+        src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=700&q=85"
+        alt="Ramo de girasoles"
+      >
+
+      <div class="producto-info">
+
+        <h3>Brillo de Sol</h3>
+
+        <p>
+          Girasoles llenos de luz para alegrar el día de alguien especial.
+        </p>
+
+        <div class="precio">$580</div>
+
+        <a
+          class="whatsapp"
+          href="#"
+        >
+          ☏ Pedir por WhatsApp
+        </a>
+
       </div>
 
-      <div class="categoria">
-        💐
-        <h3>Arreglos florales</h3>
-      </div>
+    </div>
 
-      <div class="categoria">
-        ✨
-        <h3>Ofertas</h3>
-      </div>
+    <div class="producto">
 
-      <div class="categoria">
-        🎁
-        <h3>Arreglo sorpresa</h3>
+      <img
+        src="https://images.unsplash.com/photo-1518895312237-a9e23508077d?auto=format&fit=crop&w=700&q=85"
+        alt="Ramo de rosas"
+      >
+
+      <div class="producto-info">
+
+        <h3>Pasión Eterna</h3>
+
+        <p>
+          Rosas para esos momentos en los que un detalle dice todo.
+        </p>
+
+        <div class="precio">$999</div>
+
+        <a
+          class="whatsapp"
+          href="#"
+        >
+          ☏ Pedir por WhatsApp
+        </a>
+
       </div>
 
     </div>
 
   </section>
 
+  <section class="banner">
+
+    <h2>Surprise Bouquet 🎁</h2>
+
+    <p>
+      Tú eliges tu presupuesto y colores favoritos.
+      Nosotros nos encargamos de crear la sorpresa.
+    </p>
+
+    <a href="#" class="btn">
+      Crear mi ramo sorpresa
+    </a>
+
+  </section>
+
   <footer>
-    Solecito Flower · Hermosillo, Sonora ☀️
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>☀ Solecito Flower</h3>
+
+        <p>
+          Un rayito de sol en forma de flores.
+          Creamos detalles para momentos especiales.
+        </p>
+      </div>
+
+      <div>
+        <h3>Información</h3>
+
+        <p>
+          Catálogo<br>
+          Entregas<br>
+          Métodos de pago<br>
+          Preguntas frecuentes
+        </p>
+      </div>
+
+      <div>
+        <h3>Contacto</h3>
+
+        <p>
+          📍 Hermosillo, Sonora<br>
+          📱 WhatsApp<br>
+          📷 Instagram
+        </p>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Solecito Flower · Todos los derechos reservados 💛
+    </div>
+
   </footer>
 
 </body>
